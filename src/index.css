@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hamburger-div {
+    @apply inset-x-0 h-1 bg-gray-500 rounded-sm after:top-0 before:bottom-0
+}
+
+.hamburger-div::after,
+.hamburger-div::before {
+    @apply rounded-sm bg-gray-500 absolute inset-x-0 h-1 after:top-0 before:bottom-0
+}
+
+.boost{
+    background-image: url(./images/bg-boost-mobile.svg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size:cover;
+}
+
+.form:focus:invalid + .span-1 {
+    display:block;
+}
+
+.form:invalid ~ .butt {
+    cursor: not-allowed;
+    opacity:.5;
+}
+
+.line::after {
+    content:'';
+    position: absolute;
+    top: 100%;
+    bottom:-50%;
+    transform: translateX(-50%);
+    left:50%;
+    width:8px;
+    background: hsl(180, 66%, 49%);
+    z-index: 0;
+}
+
+.fade {
+    transform: scale(0);
+    transition: transform .5s ease-out;
+}
+
+@media (min-width:1024px) {
+
+    .line-xl::before {
+        content:'';
+        position:absolute;
+        top:60%;
+        height: 8px;
+        background: hsl(180, 66%, 49%);
+        left:100%;
+        right: -150%;
+        z-index: 0;
+
+    }
+}
