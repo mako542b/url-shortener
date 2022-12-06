@@ -12,7 +12,7 @@
 }
 
 .boost{
-    background-image: url(./images/bg-boost-mobile.svg);
+    background-image: url(../images/bg-boost-mobile.svg);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size:cover;

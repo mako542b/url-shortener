@@ -76,9 +76,9 @@ const Form = ({ setLinks, links }: FormProps) => {
                 <form data-testid='form' className="grid gap-4 p-6 md:p-10 rounded-xl 
                             bg-clr-Dark-Violet md:grid-flow-col 
                                 md:grid-cols-form md:relative
-                                lg:mx-auto bg-[url(./images/bg-shorten-mobile.svg)]
+                                lg:mx-auto bg-[url(../images/bg-shorten-mobile.svg)]
                                 bg-no-repeat bg-right-top 
-                                lg:bg-[url(./images/bg-shorten-desktop.svg)]
+                                lg:bg-[url(../images/bg-shorten-desktop.svg)]
                                 lg:bg-cover"
                                 onSubmit={handleSubmit}>
                     <input type="text" placeholder="Shorten a link here.. " required
