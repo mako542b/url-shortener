@@ -73,11 +73,12 @@ const Form = ({ setLinks, links }: FormProps) => {
     return (
         <div className='bg-clr-main-bg bg-gradient-form w-full'>
             <div className="w-[90%] lg:w-[85%] xl:w-[73%] mx-auto">
-                <form data-testid='form' className="grid gap-4 p-6 md:p-10 rounded-xl 
-                            bg-clr-Dark-Violet md:grid-flow-col 
+                <form data-testid='form' className="grid gap-4 p-6
+                                md:p-14 rounded-xl 
+                              bg-clr-Dark-Violet md:grid-flow-col 
                                 md:grid-cols-form md:relative
                                 lg:mx-auto bg-[url(../images/bg-shorten-mobile.svg)]
-                                bg-no-repeat bg-right-top 
+                                bg-no-repeat bg-right-top
                                 lg:bg-[url(../images/bg-shorten-desktop.svg)]
                                 lg:bg-cover"
                                 onSubmit={handleSubmit}>
@@ -90,9 +91,9 @@ const Form = ({ setLinks, links }: FormProps) => {
                                     setLinkStr(e.target.value)
                                     setError(false)}}/>
                     {error ? (
-                        <span className="error-span | text-sm -mt-2 text-red-500 md:absolute md:bottom-2 md:left-10">{errorMsg}</span>
+                        <span className="error-span | text-sm -mt-2 text-red-500 md:absolute md:bottom-5 md:left-14">{errorMsg}</span>
                         ) : (
-                        <span className="span-1 | hidden text-sm -mt-2 text-red-500 md:absolute md:bottom-2 md:left-10">Please add a link</span>
+                        <span className="span-1 | hidden text-sm -mt-2 text-red-500 md:absolute md:bottom-5 md:left-14">Please add a link</span>
                         )}
                     <button className="px-4 py-3 bg-clr-cyan hover:bg-teal-200 rounded-lg text-white font-semibold md:w-fit butt">Shorten it!</button>
                 </form>

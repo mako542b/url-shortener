@@ -10,12 +10,14 @@ interface LinkComponentProps {
 
 const LinkComponent = ({ link, setLinks, setCopied, copied }: LinkComponentProps) => {
 
+    const [isDeleted, setIsDeleted] = useState(false) 
+
 
     const handleDelete = async (e: React.MouseEvent) => {
-        e.currentTarget.parentElement?.classList.add('fade')
+        setIsDeleted(true)
         setTimeout(() => {
             setLinks(prev => [...prev].filter(l => l.code !== link?.code))
-        },500)
+        },580)
     }
 
     const handleCopy = async () => {
@@ -31,7 +33,7 @@ const LinkComponent = ({ link, setLinks, setCopied, copied }: LinkComponentProps
 
 
     return (
-        <div className={`bg-white animate-scale-y flex flex-col lg:flex-row py-4 px-10 w-[90%] lg:w-[85%] xl:w-[73%] lg:items-center lg:gap-5 rounded-md relative group`} data-testid='link'>
+        <div className={`bg-white ${isDeleted ? 'animate-scale-rev-sm md:animate-scale-rev' : 'animate-scale-y-sm md:animate-scale-y'} flex flex-col lg:flex-row py-4 px-10 w-[90%] lg:w-[85%] xl:w-[73%] lg:items-center lg:gap-5 rounded-md relative group`} data-testid='link'>
             <a className="truncate lg:max-w-[50%] py-2" href={link?.originalLink}>{link?.originalLink}</a>
             <a className="text-clr-cyan lg:ml-auto py-2 relative after:absolute after:top-0 after:h-[1px] after:opacity-25 after:bg-clr-Very-Dark-Violet after:-inset-x-10 lg:after:hidden" href={link?.shortLink}>{link?.shortLink}</a>
             <button onClick={handleCopy} className={`py-3 lg:w-24 mt-2 lg:mt-0 ${isCopied ? 'bg-clr-Dark-Violet' : 'bg-clr-cyan hover:bg-teal-200'} rounded-md text-white text-sm`}>{isCopied ? 'Copied!' : 'Copy'}</button>

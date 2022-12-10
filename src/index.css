@@ -39,11 +39,6 @@
     z-index: 0;
 }
 
-.fade {
-    transform: scale(0);
-    transition: transform .5s ease-out;
-}
-
 @media (min-width:1024px) {
 
     .line-xl::before {

@@ -47,17 +47,31 @@ module.exports = {
       },
       keyframes: {
         scaleY: {
-          '0%': { transform: 'scale(0)'},
-          '100%': { transform: 'scale(1)'},
+          '0%': { 'margin-top':'-5.5rem', opacity:0 },
+          '50%': {opacity:0.1},
+          '100%': { 'margin-top':'0', opacity:1},
         },
         scaleRev : {
-          '0%': { transform: 'scale(1)'},
-          '100%': { transform: 'scale(0)'},  
-        }
+          '0%': { 'margin-top':'0', opacity:1 },
+          '50%': {opacity:0.1},
+          '100%': { 'margin-top':'-5.5rem', opacity:0}, 
+        },
+        scaleYSmall: {
+          '0%': { 'margin-top':'-12rem', opacity:0 },
+          '50%': {opacity:0.1},
+          '100%': { 'margin-top':'0', opacity:1},
+        },
+        scaleRevSmall : {
+          '0%': { 'margin-top':'0', opacity:1 },
+          '50%': {opacity:0.1},
+          '100%': { 'margin-top':'-12rem', opacity:0}, 
+        },
       },
       animation: {
-        'scale-y': 'scaleY 0.5s ease-in-out',
-        'scale-rev': 'scaleRev 5s ease-in-out'
+        'scale-y': 'scaleY .6s linear',
+        'scale-rev': 'scaleRev .6s linear',
+        'scale-y-sm': 'scaleYSmall .6s linear',
+        'scale-rev-sm': 'scaleRevSmall .6s linear'
       }
     },
   },
