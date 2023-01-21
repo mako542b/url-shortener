@@ -1,36 +1,10 @@
-import { linkInterface } from './App'
 import { Dispatch, SetStateAction, useState } from 'react'
 import axios from 'axios'
+import { responseInterface, linkInterface, LinkClass } from './interfaces/generalInterfaces'
 
 interface FormProps {
-    setLinks: Dispatch<SetStateAction<linkInterface[]>>
+    setLinks: Dispatch<SetStateAction<linkInterface[]>>,
     links: linkInterface[]
-}
-
-export interface responseInterface {
-    status: number,
-    data: {
-        ok: boolean,
-        result: {
-            code: string,
-            full_short_link: string,
-            original_link: string
-        }
-    }
-}
-
-class LinkClass implements linkInterface {
-    code: string
-    shortLink: string
-    originalLink: string
-    index: number
-    static index: number = 0
-    constructor(code: string, shortLink: string, originalLinkts: string){
-        this.code = code
-        this.shortLink = shortLink
-        this.originalLink = originalLinkts
-        this.index = Date.now()
-    }
 }
 
 const Form = ({ setLinks, links }: FormProps) => {
@@ -38,7 +12,6 @@ const Form = ({ setLinks, links }: FormProps) => {
     const [linkStr, setLinkStr] = useState('')
     const [error, setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
-
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -53,7 +26,6 @@ const Form = ({ setLinks, links }: FormProps) => {
         }
 
         const fullLink = `https://api.shrtco.de/v2/shorten?url=${linkStr}`
-        // setLinks(prev => prev)
         try {
             const { data } : responseInterface = await axios.get(fullLink)
             const newLink = new LinkClass(
@@ -61,6 +33,7 @@ const Form = ({ setLinks, links }: FormProps) => {
                 data.result.full_short_link,
                 data.result.original_link
             )
+
             setLinks(prev => [...prev, newLink].sort((a,b) => b.index - a.index))
 
         } catch {

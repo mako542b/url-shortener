@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react"
 
 
-const setInit = (init: any, key:string) => {
-    let val = localStorage.getItem(key)
-    val = val? JSON.parse(val) : val
-    if(val) return val
-    if(init instanceof Function) return init()
-    return init
-}
 
-const useLocalStorage = (init: any , key:string) => {
-    const [value, setter] = useState(() => setInit(init, key))
+function useLocalStorage <T>(key:string, initialValue: any) {
+    const [value, setter] = useState(() => {
+        let value = localStorage.getItem(key)
+        if(value) return JSON.parse(value)
+        else if(initialValue instanceof Function) return initialValue()
+        else return initialValue
+    })
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value))

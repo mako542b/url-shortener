@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Header from './Header'
 import FirstSection from './FirstSection'
 import Form from './Form'
@@ -7,18 +6,16 @@ import ThirdSection from './ThirdSection'
 import Boost from './Boost'
 import Footer from './Footer'
 import LinksContainer from './LinksContainer'
-import { useLocalStorage } from 'usehooks-ts'
+import useLocalStorage from './useLocalStorage'
+import { linkInterface } from './interfaces/generalInterfaces'
+import { useState } from 'react'
 
-export interface linkInterface {
-  code: string
-  shortLink: string
-  originalLink: string
-  index: number
-}
+
 
 function App() {
 
   const [links, setLinks] = useLocalStorage<linkInterface[]>('shortened-links',[])
+  // const [links, setLinks] = useState<linkInterface[]>([])
 
   return (
     <div className='font-main text-lg' data-testid='main-div'>

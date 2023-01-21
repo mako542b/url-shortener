@@ -1,4 +1,4 @@
-import { linkInterface } from "./App"
+import { linkInterface } from './interfaces/generalInterfaces'
 import { Dispatch, SetStateAction, useState } from 'react'
 
 interface LinkComponentProps {
